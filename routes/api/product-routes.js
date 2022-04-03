@@ -38,21 +38,6 @@ router.get('/:id', async (req, res) => {
 
 // create new product
 router.post('/', (req, res) => {
-  // try {
-  //   const createProduct = await Product.create(req.body);
-  //   res.status(200).json(createProduct);
-  // } catch (err) {
-  //   res.status(400).json(err);
-  // }
-  /* req.body should look like this... FOR INSOMNIA
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
- console.log(req.body)
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -77,21 +62,6 @@ router.post('/', (req, res) => {
 
 // update product
 router.put('/:id', async (req, res) => {
-  // try {
-  //   const updateProduct = await Product.update(req.body, {
-  //     where: {
-  //       id: req.params.id,
-  //     },
-  //   })
-  //   if (!updateProduct) {
-  //     res.status(404).json({message: 'No product found with this ID.'});
-  //     return;
-  //   }
-  //   res.status(200).json(updateProduct);
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
-
   Product.update(req.body, {
     where: {
       id: req.params.id,
